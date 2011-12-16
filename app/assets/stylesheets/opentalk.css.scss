@@ -1,0 +1,50 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.span1, .d, .debug{
+  background-color: yellow;
+}
+
+.d2, .debug2{
+  background-color: red;
+}
+
+.userbar {
+    .nav li {
+        display: block;
+        padding: 10px 10px 11px;
+    }
+    .nav a {
+        padding:0px;
+    }
+    span{
+        color: white;
+    }
+    background-color: black;
+    position:fixed;
+    top:0px;
+    right: 20px;
+}
+
+.content{
+    margin-top: -30px;
+}
+.header {
+    height: 100px;
+}
+
+.footer {
+    margin-top:80px;
+    span5{
+        min-height:100px;
+        display:block;
+    }
+}
+/* Mobile Fixes */
+@media (min-width: 1024px) {
+    .userbar {
+        right:20%;
+    }
+}

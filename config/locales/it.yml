@@ -1,0 +1,8 @@
+it:
+  nav:
+    login_with: "Accedi con:"
+  page:
+    new: "Nuova Pagina"
+    dummy_content: "Clicca su 'modifica' e scrivi il tuo contenuto"
+    edit: "Modifica"
+

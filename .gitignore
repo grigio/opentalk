@@ -1,0 +1,9 @@
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/
+.sass-cache/
+
+config/configs.local.yml
+config/configs/*.local.yml
+config/environments/*.local.yml
