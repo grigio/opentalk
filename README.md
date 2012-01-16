@@ -20,6 +20,7 @@ Ruby 1.8.7 or 1.9.2 (tested with RVM)
 
 ``` bash
 bundle
-rake db:setup
+rake db:migrate
+rake db:seed
 rails s
 ```

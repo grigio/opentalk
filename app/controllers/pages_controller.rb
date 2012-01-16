@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  load_and_authorize_resource
   respond_to :html
   # GET /pages
   # GET /pages.json
@@ -22,17 +23,6 @@ class PagesController < ApplicationController
     end
   end
 
-  # GET /pages/new
-  # GET /pages/new.json
-  def new_old
-    @page = Page.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render :json => @page }
-    end
-  end
-
   def new
     @page = Page.create!(:title => t('page.new'), :content => t('page.dummy_content'))
 
@@ -51,21 +41,6 @@ class PagesController < ApplicationController
     @page = Page.find(params[:id])
   end
 
-  # POST /pages
-  # POST /pages.json
-  def create_old
-    @page = Page.new(params[:page])
-
-    respond_to do |format|
-      if @page.save
-        format.html { redirect_to @page, :notice => 'Page was successfully created.' }
-        format.json { render :json => @page, :status => :created, :location => @page }
-      else
-        format.html { render :action => "new" }
-        format.json { render :json => @page.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
 
   # PUT /pages/1
   # PUT /pages/1.json
