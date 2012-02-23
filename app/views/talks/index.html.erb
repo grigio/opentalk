@@ -1,27 +1,28 @@
-<h1>Listing talks</h1>
+<%= template_include_tag 'talk_item' %>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Content</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<h1>Proposte Talks</h1>
 
-<% @talks.each do |talk| %>
-  <tr>
-    <td><%= talk.title %></td>
-    <td><%= talk.content %></td>
-    <td><%= talk.user_id %></td>
-    <td><%= link_to 'Show', talk %></td>
-    <td><%= link_to 'Edit', edit_talk_path(talk) %></td>
-    <td><%= link_to 'Destroy', talk, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<div class="row well">
+  <div class="span12">
+  <%= link_to "Inserisci la tua proposta", new_talk_path, :class => 'btn'%>
+  </div>
+  <div class="span3">
+  Ultime | Più votate
+  </div>
+</div>
+
+<% @talks.reverse.each do |talk| %>
+<div class="row" style="border-bottom: 1px solid #DDD; margin-top: 4px;">
+  <div class="span1"><%= image_tag profile_img(talk.user) %></div>
+  <div class="span13">
+    <a href="<%= talk_url(talk) %>">
+    <h3 style="margin-top: 0px; margin-bottom: .5em; line-height: .9em;"><%= talk.title %></h3></a>
+    <%= talk.user.display_name %>
+  </div>
+  <div class="span2 expand-mobile">
+    <span>@</span>6 <span>v$</span><%= talk.votes_count + 1  %>
+  </div>
+</div>
 <% end %>
-</table>
 
-<br />
-
-<%= link_to 'New Talk', new_talk_path %>
+<a class="btn" href="#">More</a>

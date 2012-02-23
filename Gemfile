@@ -16,7 +16,7 @@ gem 'oauth2' # explicit for twitter auth with sorcery
 gem "sorcery", :git => 'git://github.com/NoamB/sorcery.git', :ref => '928d098'
 gem 'cancan'
 
-gem 'thumbs_up', :git => 'https://github.com/unimatrixZxero/thumbs_up.git'
+gem 'thumbs_up', '0.5.0'
 
 # WYSIWYG
 gem 'mercury-rails', :git => 'https://github.com/jejacks0n/mercury.git', :ref => 'a2b16bcdc9'

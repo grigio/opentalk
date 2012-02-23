@@ -4,4 +4,6 @@
 
 $ ->
     $('.dropdown').dropdown()
-#    $('.alert-message').alert()
+
+    $(".toggle_vote").live "ajax:success", (data, textStatus, jqXHR) ->
+      $(this).hide()

@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(:version => 20111214221820) do
   create_table "pages", :force => true do |t|
     t.string   "title"
     t.text     "content"
+    t.integer  "position"
+    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -54,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20111214221820) do
   create_table "talks", :force => true do |t|
     t.string   "title"
     t.text     "content"
+    t.string   "status"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

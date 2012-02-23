@@ -1,9 +1,10 @@
 class CreateTalks < ActiveRecord::Migration
   def change
     create_table :talks do |t|
-      t.string :title
-      t.text :content
-      t.integer :user_id
+      t.string 	:title
+      t.text 	:content
+      t.string	:status
+      t.references :user
 
       t.timestamps
     end

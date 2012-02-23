@@ -13,3 +13,10 @@
 //= require poirot
 
 //= require main
+
+// $(document).ready(function() {
+//   $('.toggle_vote').live('ajax:success', function(data, textStatus, jqXHR){
+//     $(this).hide();
+//   });
+
+// });

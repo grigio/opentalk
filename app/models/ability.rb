@@ -2,27 +2,28 @@ class Ability
   include CanCan::Ability
 
     def initialize(user)
-        @user = user || User.new # for guest
+        @user = user || User.new(:role => 'banned') # for guest
 
-    # *Priviledge escalation* , user inherits the permissions. Default is authenticated
-    if @user.role == "banned" # Also guest
-      cannot [:update, :destroy], [Page] #, Comment]
-      #can [:update, :destroy, :approve], [Talk] #, Comment]
-      #can :manage, Bill
-    end
+      # *Priviledge escalation* , user inherits the permissions. Default is authenticated
+      if @user.role == "banned" # Also guest
+        #cannot [:update, :destroy, :create], [Page] #, Comment]
+        #can [:update, :destroy, :approve], [Talk] #, Comment]
+        #can :manage, Bill
+        can :read, [Talk, Comment, Page]
+        #cannot [:update, :create], [Talk, Comment]
+      end
 
-    if @user.is? "authenticated"
-      can :read, Page
-    end
+      if @user.is? "authenticated"
+        can :read, [Talk, Comment, Page]
+        can [:update, :create], [Talk, Comment], :user_id => @user.id
+        can [:toggle_vote], [Talk, Comment]
 
-    if @user.is? "admin"
-      can :manage, Page #, Comment]
-      #can [:update, :destroy, :approve], [Talk] #, Comment]
-      #can :manage, Bill
-    end
+      end
 
+      if @user.is? "admin"
+        can :manage, :all #, Comment]
+      end
 
-    
     end
     # Define abilities for the passed in user here. For example:
     #

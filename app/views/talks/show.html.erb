@@ -1,29 +1,22 @@
-<%= template_include_tag 'vote_box' %>
+<%#= template_include_tag 'vote_box' %>
+<% talk = @talk %>
 
-<% if notice %>
-<div class="alert-message warning" data-alert="alert">
-  <a class="close" href="#">×</a>
-  <p><%= notice %></p>
+<div class="row" style="border-bottom: 1px solid #DDD; margin-top: 4px;">
+  <div class="span1"><%= image_tag profile_img(talk.user) %></div>
+  <div class="span13">
+    <a href="<%= talk_url(talk) %>">
+    <h3 style="margin-top: 0px; margin-bottom: .5em; line-height: .9em;"><%= talk.title %></h3></a>
+    <%= talk.user.display_name %>
+  </div>
+  <div class="span2 expand-mobile">
+    <span>@</span>6 <span>v$</span><%= talk.votes_count + 1  %>
+  </div>
+  <div class="row span13">
+    <%= simple_format talk.content %>
+  </div>
 </div>
-<% end %>
 
-<h2>
-  <%= @talk.title %>
-</h2>
-
-<p>
-  <%= @talk.content %>
-</p>
-
-<p>
-  <b>Author:</b><%= @talk.user.display_name %>
-</p>
-
-<%= render 'vote_box' %>
-
-<br>--
-
-<%= link_to 'vota', toggle_vote_talk_url(@talk) %><br>
+<%= link_to 'vota', toggle_vote_talk_url(@talk), :remote => true, :class => 'toggle_vote' %><br>
 
 <div>
 <% @talk.voters_who_voted.each do |u| %>
@@ -32,22 +25,26 @@
 </div>
 
 
-<%= link_to 'Edit', edit_talk_path(@talk), :remote => true %> |
+<%= link_to 'Edit', edit_talk_path(@talk) %> |
 <%= link_to 'Back', talks_path %>|
 <%= link_to 'Comments', talk_comments_path(@talk) %>
 
 <% @comments = @talk.comments.includes(:user) %>
 <div id="comments">
 <% for comment in @comments %>
-  <div class="comment">
-    <%=simple_format comment.content %>
-    <%=simple_format comment.user.display_name %>
+<div class="row" style="border-bottom: 1px solid #DDD; margin-top: 4px;">
+  <div class="span1"><%= image_tag profile_img(comment.user) %></div>
+  <div class="span13">
+    <h4 style="margin-top: 0px; margin-bottom: .5em; line-height: .9em;"><%=simple_format comment.content %></h4>
+    <%= comment.user.display_name %>
   </div>
+</div>
 <% end %>
 </div>
 
 
-<h2>New Comment</h2>
+
+<h2>Nuovo commento</h2>
 
 <%= twitter_bootstrap_form_for [@talk, Comment.new] do |f| %>
   <div class="field">

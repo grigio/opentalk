@@ -90,9 +90,13 @@
             <% end %>
          <ul class="nav user">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle"><img src="<%= profile_img(current_user) %>"/><span class="label"><%= current_user.display_name  %></span></a>
+              <a href="#" class="dropdown-toggle">
+              <span class="imgwrap" style="position:absolute; margin-top:-2px; width: 30px;margin-left: -22px;">
+                <img src="<%= profile_img(current_user) %>" style="height:25px;"/>
+              </span>
+              </a>
               <ul class="dropdown-menu">
-                <li><a href="#">Secondary link</a></li>
+                <li><%= current_user.display_name  %></li>
                 <li><a href="#">Something else here</a></li>
                 <li><%= link_to "Logout", :logout %></li>
               </ul>
@@ -115,8 +119,12 @@
   </div>
 -->
 
-<div class="notification row">
+<% if notice %>
+<div class="alert alert-error" data-alert="alert">
+  <a class="close" href="#">×</a>
+  <p><%= notice %></p>
 </div>
+<% end %>
   
 <div class="main row">
  <div class="span16">
@@ -145,26 +153,22 @@
             </ul>
           </div>
           <div class="span5">
-            <dl>
-              <dt>Description lists</dt>
-              <dd>A description list is perfect for defining terms.</dd>
-              <dt>Euismod</dt>
-              <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-              <dd>Donec id elit non mi porta gravida at eget metus.</dd>
-              <dt>Malesuada porta</dt>
-              <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-            </dl>
+            <ul class="unstyled">
+              <li>
+                <%= link_to "Utenti", users_path %>
+              </li>
+              <li>
+                <%= link_to "Proposte Passate", '#' %>
+              </li>
+            </ul>
           </div>
           <div class="span5">
-            <dl>
-              <dt>Description lists</dt>
-              <dd>A description list is perfect for defining terms.</dd>
-              <dt>Euismod</dt>
-              <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-              <dd>Donec id elit non mi porta gravida at eget metus.</dd>
-              <dt>Malesuada porta</dt>
-              <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-            </dl>
+            <h3>Contatti</h3>
+            <ul class="unstyled">
+              <li><a href="https://twitter.com/opengeekmeeting">@opengeekmeeting</a> su Twitter</li>
+              <li><a href="https://github.com/grigio/opentalk">OpenTalk</a> su Github</li>
+              <li><a href="http://linuxdaytorino.org/cgi-bin/mailman/listinfo/organizzazione">Mailing List</a></li>
+            </ul>
           </div>
       </div>
 

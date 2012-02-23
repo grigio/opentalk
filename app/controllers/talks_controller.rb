@@ -1,13 +1,18 @@
 class TalksController < ApplicationController
+  load_and_authorize_resource
+  respond_to :html, :json
   # GET /talks
   # GET /talks.json
   def index
-    @talks = Talk.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @talks }
+    
+    if can? :manage, :all
+      @talks = Talk.plusminus_tally.limit(10)
+    else
+      @talks = Talk.plusminus_tally.where(:status => ['visible','confirmed']).limit(10)
     end
+
+
+    respond_with(@talks)
   end
 
   # GET /talks/1
@@ -84,15 +89,29 @@ class TalksController < ApplicationController
 
   # POST
   def toggle_vote
-    # TODO: check open votes days
+    # TODO: check open votes days and not self vote
     logger.info '>>>'+current_user.display_name
+    
     @talk = Talk.find(params[:id])
+
+    if @talk.user_id == current_user.id
+      redirect_to :back, :notice => t('talk.no_selfvote')
+      return
+    end
+
     if @talk.voted_by? current_user
-      current_user.clear_votes(@talk) #, :notice => 'voto annullato' 
+      current_user.unvote_for(@talk) #, :notice => 'voto annullato' 
     else
       current_user.vote_for(@talk) #, :notice => 'votato' 
     end
-    redirect_to :back
+
+    respond_to do |format|
+      #format.html { redirect_to(users_url) }
+      #format.all { render :json => {:name => 'John'} }
+      format.all { head :ok }
+    end
+
+    #redirect_to :back
     logger.info '>>>'+current_user.display_name
   end
 
