@@ -3,7 +3,6 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-    $('.dropdown-toggle').dropdown()
 
     $(".toggle_vote").live "ajax:success", (data, textStatus, jqXHR) ->
       $(this).hide()

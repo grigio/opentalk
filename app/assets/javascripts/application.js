@@ -6,11 +6,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
+//= require twitter/bootstrap
 
-//= require pages
-//= require talks
-//= require poirot
+// require pages
+// require talks
+// require poirot
 
 //= require main
 

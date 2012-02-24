@@ -14,14 +14,14 @@
 <% @talks.reverse.each do |talk| %>
 <div class="row" style="border-bottom: 1px solid #DDD; margin-top: 4px;">
   <div class="span1"><%= image_tag profile_img(talk.user) %></div>
-  <div class="span13">
+  <div class="span10">
     <a href="<%= talk_url(talk) %>">
     <h3 style="margin-top: 0px; margin-bottom: .5em; line-height: .9em;"><%= talk.title %></h3></a>
+    <span><i class="icon-comment"></i> 6</span>
+    <span><i class="icon-user"></i> <%= talk.votes_count + 1  %></span>
     <%= talk.user.display_name %>
   </div>
-  <div class="span2 expand-mobile">
-    <span>@</span>6 <span>v$</span><%= talk.votes_count + 1  %>
-  </div>
+
 </div>
 <% end %>
 

@@ -4,9 +4,8 @@
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  * require_tree . 
  *= require_self
- *= require bootstrap
- * require bootstrap-custom
- *= require bootstrap-responsive
+ *= require twitter/bootstrap
+ * require bootstrap-responsive
  *= require opentalk
  * require debug
 */

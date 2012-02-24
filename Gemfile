@@ -19,11 +19,11 @@ gem 'cancan'
 gem 'thumbs_up', '0.5.0'
 
 # WYSIWYG
-gem 'mercury-rails', :git => 'https://github.com/jejacks0n/mercury.git', :ref => 'a2b16bcdc9'
+gem 'mercury-rails' #, :git => 'https://github.com/jejacks0n/mercury.git', :ref => 'a2b16bcdc9'
 
 # Pretty Bootstrap forms
-gem 'twitter_bootstrap_form_for', :git => 'git://github.com/stouset/twitter_bootstrap_form_for.git'
-
+gem 'twitter_bootstrap_form_for' #, :git => 'git://github.com/stouset/twitter_bootstrap_form_for.git'
+gem "twitter-bootstrap-rails", "~> 2.0.1.0"
 
 group :assets do
   gem 'sass-rails',   '~> 3.1.4'
