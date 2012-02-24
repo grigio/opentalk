@@ -6,10 +6,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree ./bootstrap
+//= require bootstrap
+
 //= require pages
 //= require talks
-
 //= require poirot
 
 //= require main

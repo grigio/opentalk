@@ -5,9 +5,8 @@
  * require_tree . 
  *= require_self
  *= require bootstrap
- *= require bootstrap-custom
- *= require peculiar
- * require bootstrap-responsive
+ * require bootstrap-custom
+ *= require bootstrap-responsive
  *= require opentalk
  * require debug
 */

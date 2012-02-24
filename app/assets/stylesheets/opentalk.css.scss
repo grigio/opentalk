@@ -12,24 +12,14 @@
 }
 
 .userbar {
-    .nav li {
-        display: block;
-        padding: 10px 10px 11px;
-    }
-    .nav a {
-        padding:0px;
-    }
-    span{
-        color: white;
-    }
-    background-color: black;
     position:fixed;
     top:0px;
-    right: 20px;
+    right: 20%;
 }
 
 .content{
     margin-top: -30px;
+    background-color: white;
 }
 .header {
     height: 100px;
@@ -42,9 +32,17 @@
         display:block;
     }
 }
+
+body{
+  background-color:#eee;
+}
+
 /* Mobile Fixes */
-@media (min-width: 1024px) {
-    .userbar {
-        right:20%;
-    }
+@media (max-width: 1024px) {
+
+#start{
+  width:100%;
+  margin:0px;
+}
+
 }

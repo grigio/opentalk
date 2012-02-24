@@ -3,6 +3,7 @@ db/*.sqlite3
 log/*.log
 tmp/
 .sass-cache/
+.DS_Store
 
 config/configs.local.yml
 config/configs/*.local.yml

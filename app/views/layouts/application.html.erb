@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
   <head>
     <meta charset="utf-8">
     <title><%= Settings.site_name %></title>
@@ -25,10 +25,10 @@
     </style>
 
     <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="images/favicon.ico">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    <link rel="shortcut icon" href="/img/ogmico.png">
+    <link rel="apple-touch-icon" href="/img/ogmico.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/ogmico.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/ogmico.png">
   </head>
 
   <body>
@@ -66,50 +66,50 @@
   
     <div class="header row">
       <div class="header span16">
-        <%= link_to 'OpenTalk', root_url %>
+        <img src="/img/opengeekmeeting.png" />
       </div>
     </div>
-    
 
-      <div class="userbar">
+<div id="navbarUser" class="navbar userbar offset10 span4" style="">
+    <div class="navbar-inner">
+      <div class="container" style="">
         <ul class="nav">
+              <li><img src="/img/ogmico.png" style="width:25px; margin-top:7px;"/></li>
               <li><%= link_to '⬆', '#start' %></li>
               <li><%= link_to 'Proposte', talks_url %></li>
-        </ul>
-          <% if current_user %>
-            <% if current_user.is? "admin" %>
-        <ul class="nav admin">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle">Admin</a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Impostazioni</a></li>
-                <li><a href="#">Utenti</a></li>
-              </ul>
-            </li>
-          </ul>
-            <% end %>
-         <ul class="nav user">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle">
-              <span class="imgwrap" style="position:absolute; margin-top:-2px; width: 30px;margin-left: -22px;">
-                <img src="<%= profile_img(current_user) %>" style="height:25px;"/>
-              </span>
-              </a>
-              <ul class="dropdown-menu">
-                <li><%= current_user.display_name  %></li>
-                <li><a href="#">Something else here</a></li>
-                <li><%= link_to "Logout", :logout %></li>
-              </ul>
-            </li>
-          </ul>
-          <% else %>
-          <ul class="nav login_with">
-              <li><span><%=  t :'nav.login_with' %></span></li>
-              <li><%= link_to 'Twitter', auth_at_provider_path(:provider => :twitter) %></li>
-              <li><%= link_to 'Facebook', auth_at_provider_path(:provider => :facebook) %></li>
-          </ul>
-          <% end %>
-      </div>
+        <% if current_user && current_user.is?("admin") %>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Impostazioni</a></li>
+                  <li><a href="#">Utenti</a></li>
+                </ul>
+              </li>
+        <% end %>               
+        <% if current_user %>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="nav-me" >
+                    <img src="<%= profile_img(current_user) %>" style="width:25px; margin-bottom:-9px; margin-top:-2px;"/><b class="caret"></b>
+                  </i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#"><%= current_user.display_name  %></a></li>
+                  <li class="divider"></li>
+                  <li><%= link_to "Logout", :logout %></li>
+                </ul>
+              </li>
+        <% else %>
+                <li><span><%=  t :'nav.login_with' %></span></li>
+                <li><%= link_to 'Twitter', auth_at_provider_path(:provider => :twitter) %></li>
+                <li><%= link_to 'Facebook', auth_at_provider_path(:provider => :facebook) %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
 
 
 <!--
