@@ -1,28 +1,31 @@
-<%= template_include_tag 'talk_item' %>
+<%# content_for :head do %>
+  <%#= template_include_tag talk_list' %>
+<%# end %>
 
-<h1>Proposte Talks</h1>
+<h1><%= title 'Proposte Talks' %></h1>
 
 <div class="row well">
-  <div class="span12">
+  <div class="span8">
   <%= link_to "Inserisci la tua proposta", new_talk_path, :class => 'btn'%>
   </div>
   <div class="span3">
-  Ultime | Più votate
+    <div class="btn-group" data-toggle="buttons-checkbox">
+        <a href="<%= talks_url %>"
+           class="btn btn-primary <%= 'active' unless params[:sort]%>">Più votati</a>
+        <a href="<%= talks_url+'?sort=recent' %>"
+           class="btn btn-primary <%= 'active' if params[:sort]=='recent' %>">Recenti</a>
+    </div>
   </div>
 </div>
 
-<% @talks.reverse.each do |talk| %>
-<div class="row" style="border-bottom: 1px solid #DDD; margin-top: 4px;">
-  <div class="span1"><%= image_tag profile_img(talk.user) %></div>
-  <div class="span10">
-    <a href="<%= talk_url(talk) %>">
-    <h3 style="margin-top: 0px; margin-bottom: .5em; line-height: .9em;"><%= talk.title %></h3></a>
-    <span><i class="icon-comment"></i> 6</span>
-    <span><i class="icon-user"></i> <%= talk.votes_count + 1  %></span>
-    <%= talk.user.display_name %>
-  </div>
-
+<div id="talk_list">
+  <%= render 'talks_list', :talks => @talks %>
 </div>
-<% end %>
 
-<a class="btn" href="#">More</a>
+<!-- TODO: manca integrazione con paginazione -->
+<!--
+<a id="talk-more" class="btn btm-small" href="#">More</a>
+-->
+<%#= link_to 'More html', talks_url, :remote => true, :id => 'talk-more-html', :class => 'btn' %>
+
+

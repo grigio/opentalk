@@ -1,17 +1,4 @@
 GIT
-  remote: git://github.com/NoamB/sorcery.git
-  revision: 928d09861bec21b1cf132ca5c99bf656a6168bba
-  ref: 928d098
-  specs:
-    sorcery (0.7.0)
-      bcrypt-ruby (~> 3.0.0)
-      mongo_mapper
-      oauth (~> 0.4.4)
-      oauth (~> 0.4.4)
-      oauth2 (~> 0.4.1)
-      oauth2 (~> 0.4.1)
-
-GIT
   remote: git://github.com/grigio/rails_config.git
   revision: 3699a75de08579e5cf15cc55efd0a799679745f3
   specs:
@@ -52,7 +39,6 @@ GEM
     addressable (2.2.6)
     arel (2.2.1)
     bcrypt-ruby (3.0.1)
-    bson (1.5.1)
     builder (3.0.0)
     cancan (1.6.7)
     cocaine (0.2.1)
@@ -65,9 +51,7 @@ GEM
     coffee-script-source (1.1.3)
     commonjs (0.2.0)
       therubyracer (~> 0.9.9)
-    daemons (1.1.4)
     erubis (2.7.0)
-    eventmachine (0.12.10)
     execjs (1.2.12)
       multi_json (~> 1.0)
     faraday (0.6.1)
@@ -98,15 +82,8 @@ GEM
       paperclip
       rails (>= 3.1.0)
     mime-types (1.17.2)
-    mongo (1.5.1)
-      bson (= 1.5.1)
-    mongo_mapper (0.10.1)
-      activemodel (~> 3.0)
-      activesupport (~> 3.0)
-      plucky (~> 0.4.0)
     multi_json (1.0.4)
     multipart-post (1.1.4)
-    mustache (0.99.4)
     oauth (0.4.5)
     oauth2 (0.4.1)
       faraday (~> 0.6.1)
@@ -116,11 +93,6 @@ GEM
       activesupport (>= 2.3.2)
       cocaine (>= 0.0.2)
       mime-types
-    plucky (0.4.3)
-      mongo (~> 1.3)
-    poirot (0.0.3)
-      mustache
-      rails (> 3)
     polyglot (0.3.3)
     rack (1.3.5)
     rack-cache (1.1)
@@ -157,6 +129,12 @@ GEM
       railties (~> 3.1.0)
       sass (~> 3.1.10)
       tilt (~> 1.3.2)
+    sorcery (0.7.5)
+      bcrypt-ruby (~> 3.0.0)
+      oauth (~> 0.4.4)
+      oauth (~> 0.4.4)
+      oauth2 (~> 0.4.1)
+      oauth2 (~> 0.4.1)
     sprockets (2.0.3)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -164,10 +142,6 @@ GEM
     sqlite3 (1.3.5)
     therubyracer (0.9.9)
       libv8 (~> 3.3.10)
-    thin (1.3.1)
-      daemons (>= 1.0.9)
-      eventmachine (>= 0.12.6)
-      rack (>= 1.0.0)
     thor (0.14.6)
     thumbs_up (0.5.0)
       activerecord
@@ -197,16 +171,14 @@ DEPENDENCIES
   ledermann-rails-settings
   mercury-rails
   oauth2
-  poirot
   rack (= 1.3.5)
   rails (= 3.1.3)
   rails-i18n
   rails_config!
   sass-rails (~> 3.1.4)
-  sorcery!
+  sorcery
   sqlite3
   therubyracer
-  thin
   thumbs_up (= 0.5.0)
   twitter-bootstrap-rails (~> 2.0.1.0)
   twitter_bootstrap_form_for

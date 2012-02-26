@@ -4,15 +4,37 @@ class TalksController < ApplicationController
   # GET /talks
   # GET /talks.json
   def index
-    
-    if can? :manage, :all
-      @talks = Talk.plusminus_tally.limit(10)
+
+    if params[:sort] == 'recent'
+      # not yet
     else
-      @talks = Talk.plusminus_tally.where(:status => ['visible','confirmed']).limit(10)
+      @talks = Talk.plusminus_tally
+    end
+
+    if can? :manage, :all
+      # no filter
+    else
+      @talks ||= Talk.all
+      @talks = @talks.where(:status => ['visible','confirmed'])
     end
 
 
-    respond_with(@talks)
+
+
+    # NOTE: importantissimo altrimenti poirot e mustache a puttane!!
+    @talks = @talks.includes(:user).offset(params[:page] ? params[:page] : 0).all
+
+
+    respond_with(@talks, :include => [ :user]) do |format|
+      # NOTE: importantissimo altrimenti poirot e mustache a puttane!!
+      #format.json { render :json => { :talks => @talks} }
+      format.html { if request.xhr?
+                      render :partial => 'talks_list',
+                             :locals => { :talks => @talks },
+                             :layout => false
+                    end
+                    }
+    end
   end
 
   # GET /talks/1
@@ -50,7 +72,7 @@ class TalksController < ApplicationController
     
     respond_to do |format|
       if @talk.save
-        format.html { redirect_to @talk, :notice => 'Talk was successfully created.' }
+        format.html { redirect_to @talk, :notice => 'Il tuo talk è stato salvato. A breve sarà visionato dallo staff.' }
         format.json { render :json => @talk, :status => :created, :location => @talk }
       else
         format.html { render :action => "new" }
@@ -66,7 +88,7 @@ class TalksController < ApplicationController
 
     respond_to do |format|
       if @talk.update_attributes(params[:talk])
-        format.html { redirect_to @talk, :notice => 'Talk was successfully updated.' }
+        format.html { redirect_to @talk, :notice => 'Il talk è stato aggiornato' }
         format.json { head :ok }
       else
         format.html { render :action => "edit" }

@@ -6,3 +6,8 @@ $ ->
 
     $(".toggle_vote").live "ajax:success", (data, textStatus, jqXHR) ->
       $(this).hide()
+
+    $('.user-profile').popover( { delay: { show: 500, hide: 1500 } })
+
+    #$('#talk-more').live "ajax:success", (data, textStatus, jqXHR) ->
+    #  $(this).hide()

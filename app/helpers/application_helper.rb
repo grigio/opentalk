@@ -10,5 +10,10 @@ module ApplicationHelper
   def profile_url(user)
     
   end
+
+  def title(something = nil)
+  	@title ||= something
+  	@title
+  end
   
 end

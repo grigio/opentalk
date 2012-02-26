@@ -1,5 +1,4 @@
 source 'http://rubygems.org'
-# js bootstrap 2.0.1
 gem 'rails', '3.1.3'
 gem 'rails-i18n'
 gem 'rack',  '=1.3.5'
@@ -9,11 +8,11 @@ gem 'therubyracer'
 gem "rails_config", :git => 'git://github.com/grigio/rails_config.git'
 gem 'ledermann-rails-settings', :require => 'rails-settings'
 
-gem 'poirot'
+#gem 'poirot' #, :git => 'https://github.com/olivernn/poirot.git'
 
 # Authentication and authorization
 gem 'oauth2' # explicit for twitter auth with sorcery
-gem "sorcery", :git => 'git://github.com/NoamB/sorcery.git', :ref => '928d098'
+gem "sorcery" #, :git => 'git://github.com/NoamB/sorcery.git', :ref => '928d098'
 gem 'cancan'
 
 gem 'thumbs_up', '0.5.0'
@@ -33,6 +32,6 @@ end
 
 
 group :development do
-  gem 'thin'
+#  gem 'thin'
 end
 
