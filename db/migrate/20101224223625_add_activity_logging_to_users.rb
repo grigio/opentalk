@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddActivityLoggingToUsers < ActiveRecord::Migration
   def self.up
     add_column :users, :last_login_at,     :datetime, :default => nil

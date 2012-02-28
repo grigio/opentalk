@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class OauthsController < ApplicationController
   skip_before_filter :require_login
 

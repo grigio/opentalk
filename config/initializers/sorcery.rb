@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Rails.application.config.sorcery.submodules = [:user_activation, :remember_me, :session_timeout, :activity_logging, :external]
 
 Rails.application.config.sorcery.configure do |config|

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class UsersController < ApplicationController
   before_filter :require_login_from_http_basic, :only => [:login_from_http_basic]
   skip_before_filter :require_login, :only => [:index, :new, :create, :activate, :login_from_http_basic]

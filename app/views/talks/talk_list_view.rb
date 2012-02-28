@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Talks
   class TalkListView < Poirot::View
 

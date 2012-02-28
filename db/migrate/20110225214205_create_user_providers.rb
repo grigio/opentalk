@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateUserProviders < ActiveRecord::Migration
   def self.up
     create_table :user_providers do |t|

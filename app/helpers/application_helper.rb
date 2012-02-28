@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module ApplicationHelper
   def profile_img(user)
     if user.providers[0].provider == "twitter"
