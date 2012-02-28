@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class TalksController < ApplicationController
   load_and_authorize_resource
   respond_to :html, :json
@@ -8,7 +9,7 @@ class TalksController < ApplicationController
     if params[:sort] == 'recent'
       # not yet
     else
-      @talks = Talk.plusminus_tally
+      @talks = Talk.tally
     end
 
     if can? :manage, :all
