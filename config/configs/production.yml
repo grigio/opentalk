@@ -1,0 +1,8 @@
+site_url:   "http://ogm.heroku.com"
+secret_token: "49d9a7008b73ca1cfc4e95a This is your Rails secret_token 0f86d3c5c9b3d6250b037bc2bdd16d03edb2ee86bf1"
+twitter:
+    key: "gTaolBdom3yFJnPSOlfJZw" # You should change this keys with your own
+    secret: "ZH5z9KkVR74l8kpJaz0OcQiEwsgZlpNDdbfganLyw"
+facebook:
+    key: "304588686270002"
+    secret: "1578817a9ac35b76df5c33e351a60af1"

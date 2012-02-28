@@ -31,8 +31,8 @@ $(document).ready(function() {
 	    // do something with 'data' response object
 
 	    $('#talk_list').append(data);
-	    # FIXME DRY
-	    $('.user-profile').popover( { delay: { show: 500, hide: 1500 } })
+	    // FIXME DRY
+	    $('.user-profile').popover( { delay: { show: 500, hide: 1500 } });
 
 	});
 

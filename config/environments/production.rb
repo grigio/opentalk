@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Opentalk::Application.configure do
 
   # Settings specified here will take precedence over those in config/application.rb
@@ -24,7 +25,7 @@ Opentalk::Application.configure do
   config.action_dispatch.best_standards_support = :builtin
 
   # Do not compress assets
-  config.assets.compress = true #false
+  config.assets.compress = true
 
   # Expands the lines which load the assets
   config.assets.debug = false
