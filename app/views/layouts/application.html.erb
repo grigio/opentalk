@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width; initial-scale=1.0">
-    
+    <%= yield :head %>
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -15,6 +15,11 @@
 	<!-- CSS
   ================================================== -->
   <%= stylesheet_link_tag    "application" %>
+<% if Rails.env == "production" %>
+  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" %>
+<% else %>
+  <%= javascript_include_tag "jquery.min" %>
+<% end %>
   <%= javascript_include_tag "application" %>
   <%#= javascript_include_tag 'mercury' if current_user %>
   <%= csrf_meta_tags %>
@@ -29,9 +34,24 @@
     <link rel="apple-touch-icon" href="/img/ogmico.png">
     <link rel="apple-touch-icon" sizes="72x72" href="/img/ogmico.png">
     <link rel="apple-touch-icon" sizes="114x114" href="/img/ogmico.png">
+
+<% if Rails.env == 'production' %>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-2kk71kk7-13'.replace('kk','6').replace('kk','6') ]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+<% end %>
+
   </head>
 
-  <body>
+  <body <%= yield :body %>>
 
 	<!-- HEADER
   ================================================== -->
@@ -154,6 +174,8 @@
 
     </div> <!-- /content -->
     </div> <!-- /container -->
-    
+
   </body>
 </html>
+
+

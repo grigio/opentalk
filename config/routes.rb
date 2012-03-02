@@ -16,9 +16,7 @@ Opentalk::Application.routes.draw do
     member { post :mercury_update }
   end
 
-  root :to => redirect("/pages/1")
-  #get "home/index"
-  get "home/secret"
+  root :to => "pages#show", :id => 1
 
   resources :users, :admins do
     member do
