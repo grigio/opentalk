@@ -1,14 +1,3 @@
-<%
-cookies.permanent[:c] = params[:c] if params[:c]
-%>
-<% content_for :head do %>
-	<meta http-equiv="Refresh" content="1; url=<%= Configs.site_url %>" >
-<% end if params[:c] %>
-<% content_for :body do %>
-  onLoad="javascript:pageTracker._setVar('<%= cookies[:c].slice(0..10) %>');"
-<% end if params[:c] || cookies[:c] %>
-
-
 <div class="page-header">
 <% if can? :manage, Page %>
   <p><%= link_to "Edit Page", "/editor" + request.path, :id => "edit_link", :data  => {:save_url => mercury_update_page_path(@page)} %></p>

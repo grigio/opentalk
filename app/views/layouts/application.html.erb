@@ -1,3 +1,13 @@
+<%
+cookies.permanent[:c] = params[:c] if params[:c]
+%>
+<% content_for :head do %>
+  <meta http-equiv="Refresh" content="1; url=<%= Configs.site_url %>" >
+<% end if params[:c] %>
+<% content_for :body do %>
+  onLoad="javascript:pageTracker._setVar('<%= cookies[:c].slice(0..10) %>');"
+<% end if params[:c] || cookies[:c] %>
+
 <!DOCTYPE html>
 <html lang="it">
   <head>
