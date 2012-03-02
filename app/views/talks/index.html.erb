@@ -11,9 +11,9 @@
   <div class="span3">
     <div class="btn-group" data-toggle="buttons-checkbox">
         <a href="<%= talks_url %>"
-           class="btn btn-primary <%= 'active' unless params[:sort]%>">Più votati</a>
-        <a href="<%= talks_url+'?sort=recent' %>"
-           class="btn btn-primary <%= 'active' if params[:sort]=='recent' %>">Recenti</a>
+           class="btn btn-primary <%= 'active' unless params[:sort] %>">Recenti</a>
+        <a href="<%= talks_url+'?sort=most' %>"
+           class="btn btn-primary <%= 'active' if params[:sort]=='most' %>">Più votati</a>
     </div>
   </div>
 </div>

@@ -6,21 +6,17 @@ class TalksController < ApplicationController
   # GET /talks.json
   def index
 
-    if params[:sort] == 'recent'
-      # not yet
-    else
+    if params[:sort] == 'most'
       @talks = Talk.tally
+    else
+      @talks = Talk.recent
     end
 
     if can? :manage, :all
       # no filter
     else
-      @talks ||= Talk.all
-      @talks = @talks.where(:status => ['visible','confirmed'])
+      @talks = @talks.published
     end
-
-
-
 
     # NOTE: importantissimo altrimenti poirot e mustache a puttane!!
     @talks = @talks.includes(:user).offset(params[:page] ? params[:page] : 0).all

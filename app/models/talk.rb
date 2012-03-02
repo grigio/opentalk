@@ -7,6 +7,9 @@ class Talk < ActiveRecord::Base
   validates :content, :presence => true
   after_initialize :default_values
   
+  scope :published, lambda { where(:status => ['visible','confirmed']) }
+  scope :recent, lambda { order("updated_at desc") }
+
   def to_param
     "#{id}-#{title.parameterize}"
   end
