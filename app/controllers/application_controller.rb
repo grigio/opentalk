@@ -9,11 +9,11 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
   end
-  
+
   protected
   
   def not_authenticated
-    redirect_to root_path, :alert => "Please login first."
+    redirect_to root_path, :alert => "Devi prima autenticarti."
   end
   
   def current_users_list
