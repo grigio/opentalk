@@ -49,8 +49,12 @@ body{
 }
 
 
+/* Globali, errori e notifiche */
+.error input, .error textarea {
+    border-color:red;
+}
 
-
+/*  */
 
 /* Mobile Fixes */
 @media (max-width: 1024px) {

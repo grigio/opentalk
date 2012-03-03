@@ -1,14 +1,13 @@
 <%= twitter_bootstrap_form_for(@talk) do |f| %>
   <% if @talk.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@talk.errors.count, "error") %> prohibited this talk from being saved:</h2>
-
+  <div class="alert alert-error" data-alert="alert">
+    <a class="close" data-dismiss="alert" href="#">×</a>
       <ul>
       <% @talk.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
-    </div>
+  </div>
   <% end %>
 
   <div class="field">
@@ -17,8 +16,10 @@
   </div>
   <div class="field">
 
-    <%= f.text_area :content, 'Abstract' %>
+    <%= f.text_area :content, 'Abstract', :id => 'markdown_example' %>
   </div>
+
+  <div id="markdown_formatted"></div> 
 
   <div class="actions">
     <%= f.submit %>
