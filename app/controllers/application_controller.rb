@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
   
   helper_method :current_users_list
   
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, :alert => exception.message
+  end
+  
   protected
   
   def not_authenticated

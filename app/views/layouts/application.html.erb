@@ -5,8 +5,7 @@ cookies.permanent[:c] = params[:c] if params[:c]
   <meta http-equiv="Refresh" content="1; url=<%= Configs.site_url %>" >
 <% end if params[:c] %>
 <% content_for :body do %>
-  onLoad="javascript:pageTracker._setVar('<%= cookies[:c].slice(0..10) %>');"
-<% end if params[:c] || cookies[:c] %>
+  onLoad="javascript:pageTracker._setVar('<%= cookies[:c].slice(0..10) %>');"<% end if params[:c] || cookies[:c] %>
 
 <!DOCTYPE html>
 <html lang="it">
@@ -135,6 +134,13 @@ cookies.permanent[:c] = params[:c] if params[:c]
 <div class="alert alert-success" data-alert="alert">
   <a class="close" data-dismiss="alert" href="#">×</a>
   <p><%= notice %></p>
+</div>
+<% end %>
+
+<% if alert %>
+<div class="alert alert-warning" data-alert="alert">
+  <a class="close" data-dismiss="alert" href="#">×</a>
+  <p><%= alert %></p>
 </div>
 <% end %>
 

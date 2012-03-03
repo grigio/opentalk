@@ -8,4 +8,6 @@ it:
   talk:
     no_selfvote: "Non puoi votarti da solo"
     voting_closed: "Le votazioni sono chiuse. Contatta gli amministratori per maggiori informazioni"
-
+  unauthorized:
+    manage:
+      all: "Non sei autorizzato ad accedere a questa risorsa (%{action} %{subject}). Prova ad accedere o contatta gli amministratori."
