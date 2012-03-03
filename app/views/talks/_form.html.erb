@@ -1,4 +1,6 @@
-<%= twitter_bootstrap_form_for(@talk) do |f| %>
+<div class="row">
+  <div class="span6">
+  <%= twitter_bootstrap_form_for(@talk) do |f| %>
   <% if @talk.errors.any? %>
   <div class="alert alert-error" data-alert="alert">
     <a class="close" data-dismiss="alert" href="#">×</a>
@@ -14,14 +16,21 @@
 
     <%= f.text_field :title, 'Titolo' %>
   </div>
-  <div class="field">
-
-    <%= f.text_area :content, 'Abstract', :id => 'markdown_example' %>
+  <div class="field wmd-panel">
+    <div id="wmd-button-bar"></div>
+    <%= f.text_area :content, 'Abstract', :class => 'wmd-input', :id => 'wmd-input' %>
   </div>
-
-  <div id="markdown_formatted"></div> 
 
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+</div>
+
+<div class="span2"></div>
+
+<div class="span3" style="margin-top: 80px;">
+  <strong>Anteprima:</strong><br>
+  <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
+</div>
+</div>

@@ -6,6 +6,7 @@
  *= require_self
  *= require twitter/bootstrap
  * require bootstrap-responsive
+ *= require wmd-editor
  *= require opentalk
  * require debug
 */

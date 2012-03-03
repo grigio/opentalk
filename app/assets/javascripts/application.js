@@ -7,6 +7,11 @@
 // require jquery //cdn
 //= require jquery_ujs
 //= require twitter/bootstrap
+
+//= require Markdown.Converter
+//= require Markdown.Sanitizer
+//= require Markdown.Editor
+
 //= require main
 
 // require handlebars
@@ -35,6 +40,10 @@ $(document).ready(function() {
 	    $('.user-profile').popover( { delay: { show: 500, hide: 1500 } });
 
 	});
+
+    var converter1 = Markdown.getSanitizingConverter();
+    var editor1 = new Markdown.Editor(converter1);
+    editor1.run();
 
 // NOTE: mustache way
 // $('#talk-more').click(function () {
