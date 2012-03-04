@@ -7,6 +7,12 @@ $ ->
     $(".toggle_vote").live "ajax:success", (data, textStatus, jqXHR) ->
       $(this).hide()
 
+    $(".set_visible").live "ajax:success", (data, textStatus, jqXHR) ->
+      $('.talk').removeClass('talk-hidden')
+
+    $(".set_hidden").live "ajax:success", (data, textStatus, jqXHR) ->
+      $('.talk').addClass('talk-hidden')
+
     $('.user-profile').popover( { delay: { show: 500, hide: 1500 } })
 
     #$('#talk-more').live "ajax:success", (data, textStatus, jqXHR) ->

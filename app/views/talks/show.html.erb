@@ -1,7 +1,31 @@
 <%#= template_include_tag 'vote_box' %>
 <% talk = @talk %>
 
-<div class="row talk-<%= talk.status %>"
+<% if can? :update, talk %>
+<div class="row">
+  <div class="span12">
+    <span>
+      <%= link_to edit_talk_url(talk) do %>
+        <i class="icon-pencil"></i> Modifica
+      <% end %>
+    </span>
+  <% if can? :manage, talk %>
+    <span><i class="icon-remove"></i> Elimina</span>
+    <%= link_to talk_url(@talk)+"?talk[status]=visible", :remote => true, :method => :put,
+                  :class => 'set_visible' do %>
+      <span><i class="icon-ok"></i> Approva</span>
+    <% end %>
+    <%= link_to talk_url(@talk)+"?talk[status]=hidden", :remote => true, :method => :put,
+                  :class => 'set_hidden' do %>
+      <span><i class="icon-ok"></i> Nascondi</span>
+      <%# form_for() %>
+    <% end %>
+  <% end %>
+  </div>
+</div>
+<% end %>
+
+<div class="row talk talk-<%= talk.status %>" id="talk-<%= talk.id %>"
      style="border-bottom: 1px solid #DDD; margin-top: 4px;">
   <div class="span1">
     <%= render 'users/user_profile_mini', :user => talk.user %>
@@ -9,7 +33,7 @@
   <div class="span11">
     <a href="<%= talk_url(talk) %>">
     <h3 style="margin-top: 0px; margin-bottom: .5em; margin-right: .5em; line-height: .9em;"><%= talk.title %></h3></a>
-    <span><i class="icon-user"></i> <%= talk.votes_count + 1  %></span>
+    <span><i class="icon-eye-open"></i> <%= talk.votes_count + 1  %></span>
     <span><i class="icon-comment"></i> <%= talk.comments.count  %></span>
     Proposto il: <%= talk.created_at.to_s.slice(0..9)  %> da: <strong><%= talk.user.display_name %></strong>
   </div>

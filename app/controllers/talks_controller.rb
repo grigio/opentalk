@@ -85,7 +85,13 @@ class TalksController < ApplicationController
 
     respond_to do |format|
       if @talk.update_attributes(params[:talk])
-        format.html { redirect_to @talk, :notice => 'Il talk è stato aggiornato' }
+        format.html {
+          unless request.xhr?
+            redirect_to @talk, :notice => 'Il talk è stato aggiornato'
+          else
+            head :ok
+          end
+        }
         format.json { head :ok }
       else
         format.html { render :action => "edit" }
