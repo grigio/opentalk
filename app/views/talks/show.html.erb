@@ -42,7 +42,12 @@
     <div id="wmd-preview" class="wmd-panel wmd-preview"></div>
   </div>
   <div class="row offset4 span8" style="margin-bottom:20px;">
+  <% if current_user %>
       <%= link_to current_user.voted_for?(@talk) ? 'Annulla voto' : 'Vota', toggle_vote_talk_url(@talk), :remote => true, :class => 'toggle_vote btn btn-mini btn-primary' %>
+  <% else %>
+      <%= link_to 'Vota', '#', :remote => true, :confirm => 'Per poter votare devi accedere', :class => 'toggle_vote btn btn-mini btn-primary' %>
+  <% end %>
+  
   </div>
 </div>
 
