@@ -30,12 +30,9 @@
 $(document).ready(function() {
 	$('.user-profile').popover( { delay: { show: 500, hide: 1000 } });
 
-	$('#talk-more-html').bind('ajax:success', function(evt, data, status, xhr){
+	$('#more-button').live('ajax:success', function(evt, data, status, xhr){
 	    var $this = $(this);
-
-	    // do something with 'data' response object
-
-	    $('#talk_list').append(data);
+	    $('#more-wrapper').replaceWith(data);
 	    // FIXME DRY
 	    $('.user-profile').popover( { delay: { show: 500, hide: 1500 } });
 

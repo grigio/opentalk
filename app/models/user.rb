@@ -18,6 +18,16 @@ class User < ActiveRecord::Base
     super(role) if roles.include? role
   end
 
+  # from act_as_voteable
+  def unvote_for(voteable)
+    Vote.where(
+      :voter_id => self.id,
+      :voter_type => self.class.base_class.name,
+      :voteable_id => voteable.id,
+      :voteable_type => voteable.class.base_class.name
+    ).map(&:destroy)
+  end
+
 
   private
 

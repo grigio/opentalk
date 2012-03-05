@@ -6,6 +6,7 @@ $ ->
 
     $(".toggle_vote").live "ajax:success", (data, textStatus, jqXHR) ->
       $(this).hide()
+      alert 'Voto registrato'
 
     $(".set_visible").live "ajax:success", (data, textStatus, jqXHR) ->
       $('.talk').removeClass('talk-hidden')

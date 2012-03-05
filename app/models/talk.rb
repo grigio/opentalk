@@ -8,7 +8,7 @@ class Talk < ActiveRecord::Base
   after_initialize :default_values
   
   scope :published, lambda { where(:status => ['visible','confirmed']) }
-  scope :recent, lambda { order("updated_at desc") }
+  scope :recent, lambda { order("created_at desc") }
 
   def to_param
     "#{id}-#{title.parameterize}"

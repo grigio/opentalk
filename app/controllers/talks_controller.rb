@@ -5,10 +5,11 @@ class TalksController < ApplicationController
   # GET /talks
   # GET /talks.json
   def index
-
+    limit = 15 # FIXME partial hardcoded
+    params[:sort] ||= 'recent'
     if params[:sort] == 'most'
       @talks = Talk.tally
-    else
+    else # recent
       @talks = Talk.recent
     end
 
@@ -19,7 +20,8 @@ class TalksController < ApplicationController
     end
 
     # NOTE: importantissimo altrimenti poirot e mustache a puttane!!
-    @talks = @talks.includes(:user).offset(params[:page] ? params[:page] : 0).all
+    params[:page] ||= 0
+    @talks = @talks.includes(:user).offset(params[:page].to_i * limit).limit(limit)
 
 
     respond_with(@talks, :include => [ :user]) do |format|
