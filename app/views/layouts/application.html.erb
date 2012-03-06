@@ -49,6 +49,13 @@ cookies.permanent[:c] = params[:c] if params[:c]
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-2kk71kk7-13'.replace('kk','6').replace('kk','6') ]);
       _gaq.push(['_trackPageview']);
+      _gaq.push(['_setCustomVar',
+            1,                // This custom var is set to slot #1.  Required parameter.
+            '<%= cookies[:c].slice(0..10) || '' %>',    // The name of the custom variable.  Required parameter.
+            'v-<%= cookies[:c].slice(0..10) || '' %>',        // The value of the custom variable.  Required parameter.
+                              //  (possible values might be Free, Bronze, Gold, and Platinum)
+            1                 // Sets the scope to visitor-level.  Optional parameter.
+       ]); 
 
       (function() {
         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
