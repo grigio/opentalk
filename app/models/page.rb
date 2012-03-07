@@ -3,7 +3,6 @@ class Page < ActiveRecord::Base
   after_initialize :default_values
 
   def to_param
-    title ||= I18n.t('page.new')
     "#{id}-#{title.parameterize}"
   end
 
