@@ -4,8 +4,6 @@ cookies.permanent[:c] = params[:c] if params[:c]
 <% content_for :head do %>
   <meta http-equiv="Refresh" content="1; url=<%= Configs.site_url %>" >
 <% end if params[:c] %>
-<% content_for :body do %>
-  onLoad="javascript:pageTracker._setVar('<%= cookies[:c].slice(0..10) %>');"<% end if params[:c] || cookies[:c] %>
 
 <!DOCTYPE html>
 <html lang="it">
@@ -48,7 +46,7 @@ cookies.permanent[:c] = params[:c] if params[:c]
     <script type="text/javascript">
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-2kk71kk7-13'.replace('kk','6').replace('kk','6') ]);
-      _gaq.push(['_setCustomVar', 1, '<%= cookies[:c].slice(0..10) || 'a' %>', 'v-<%= cookies[:c].slice(0..10) || '' %>',2]);
+      _gaq.push(['_setCustomVar', 1, '<%= cookies[:c] || 'nc' %>', 'v-<%= cookies[:c] || 'nc' %>',2]);
       _gaq.push(['_trackPageview']);
       _gaq.push(['_trackPageLoadTime']);
 
