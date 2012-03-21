@@ -1,5 +1,13 @@
+
 <%#= template_include_tag 'vote_box' %>
 <% talk = @talk %>
+
+<% content_for :head do %>
+<!-- from  view -->
+<meta name="og:title" content="<%= sanitize talk.title %>">
+<meta name="og:description" content="<%= sanitize talk.content.gsub(/\r\n?|<[a-z]*>|<[a-z]*\/>/, ' ') %>">
+
+<% end %>
 
 <% if can? :update, talk %>
 <div class="row">
